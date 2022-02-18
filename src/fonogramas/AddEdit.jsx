@@ -83,9 +83,20 @@ function AddEdit({ history, match }) {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} onReset={reset}>
-            <h1>{isAddMode ? 'Fonogramas' : 'Edit Fonograma'}</h1>
+            <h1>{isAddMode ? 'Add User' : 'Fonogramas'}</h1>
             <div className="form-row">
-                
+                <div className="form-group col">
+                    <label>Obra ID</label>
+                    <select name="title" ref={register} className={`form-control ${errors.title ? 'is-invalid' : ''}`}>
+                        <option value=""></option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Ms">Ms</option>
+                    </select>
+                    <div className="invalid-feedback">{errors.title?.message}</div>
+                </div>
+
                 <div className="form-group col-5">
                     <label>Nome da Obra</label>
                     <input name="nome_obra" type="text" ref={register} className={`form-control ${errors.nome_obra ? 'is-invalid' : ''}`} />
@@ -119,23 +130,38 @@ function AddEdit({ history, match }) {
                     <div className="invalid-feedback">{errors.nome_interprete?.message}</div>
                 </div>
 
-                <div className="form-group col-5">
-                    <label>Nome Completo</label>
-                    <input name="nome_completo" type="text" ref={register} className={`form-control ${errors.nome_completo ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.nome_completo?.message}</div>
-                </div>
+                </div><div className="form-group col-4">
+                     <label>Selecionar Obra</label>
+                        <input name="lastName" type="text" ref={register} className={`form-control ${errors.lastName ? 'is-invalid' : ''}`} />
+                        <div className="invalid-feedback">{errors.lastName?.message}</div>
 
-                <div className="form-group col-5">
-                    <label>Pseudônimo</label>
-                    <input name="pseudonimo" type="text" ref={register} className={`form-control ${errors.pseudonimo ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.pseudonimo?.message}</div>
-                </div>
+                        </div><div className="form-group col-4">
+                      <label>Titulo da Faixa</label>
+                        <input name="lastName" type="text" ref={register} className={`form-control ${errors.lastName ? 'is-invalid' : ''}`} />
+                        <div className="invalid-feedback">{errors.lastName?.message}</div> 
 
-                <div className="form-group col-3">
-                    <label>CPF</label>
-                    <input name="cpf" type="text" ref={register} className={`form-control ${errors.cpf ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.cpf?.message}</div>
-                </div>
+                        </div><div className="form-group col-2">
+                    <label>Minutagem da Faixa</label>
+                        <input name="lastName" type="text" ref={register} className={`form-control ${errors.lastName ? 'is-invalid' : ''}`} />
+                        <div className="invalid-feedback">{errors.lastName?.message}</div>  
+
+                        </div><div className="form-group col-3">
+                    <label>Genero da Faixa</label>
+                        <input name="lastName" type="text" ref={register} className={`form-control ${errors.lastName ? 'is-invalid' : ''}`} />
+                        <div className="invalid-feedback">{errors.lastName?.message}</div> 
+
+                        </div><div className="form-group col-5">
+                    <label>Produtor Fonogáfico</label>
+                        <input name="lastName" type="text" ref={register} className={`form-control ${errors.lastName ? 'is-invalid' : ''}`} />
+                        <div className="invalid-feedback">{errors.lastName?.message}</div> 
+
+                        </div><div className="form-group col-3">
+                    <label>Interpretes</label>
+                        <input name="lastName" type="text" ref={register} className={`form-control ${errors.lastName ? 'is-invalid' : ''}`} />
+                        <div className="invalid-feedback">{errors.lastName?.message}</div>
+                       
+                        <label className='form-label'>Upload Letra ou Partitura</label>
+                            <input type ='file' accepet ='application/pdf' />
 
                 <div className="form-group col-5">
                     <label>Função</label>
