@@ -11,6 +11,10 @@ import { configureFakeBackendAssociacao } from './_helpers';
 configureFakeBackendAssociacao();
 import { configureFakeBackendObra } from './_helpers';
 configureFakeBackendObra();
+import { configureFakeBackendFonogramas } from './_helpers';
+configureFakeBackendFonogramas();
+
+
 
 render(
     <BrowserRouter>

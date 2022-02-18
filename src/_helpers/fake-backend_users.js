@@ -1,3 +1,4 @@
+import { generatePath } from 'react-router-dom/cjs/react-router-dom.min';
 import { Role } from '.'
 
 export function configureFakeBackend() {
@@ -10,6 +11,15 @@ export function configureFakeBackend() {
         email: 'joe@bloggs.com',
         role: Role.User,
         password: 'joe123'
+    },
+{ 
+        id: 2,
+        title: 'Mr',
+        firstName: 'Luiz Fernando',
+        lastName: 'Souza',
+        email: 'lffzouza@gmail.com',
+        role: Role.User,
+        password: '123123',
     }];
 
     // monkey patch fetch to setup fake backend

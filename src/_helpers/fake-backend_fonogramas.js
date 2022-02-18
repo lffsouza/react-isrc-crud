@@ -1,15 +1,20 @@
-import { Role } from '.'
+export { Genero } from './genero'
 
-export function configureFakeBackendFonograma() {
+export function configureFakeBackendFonogramas() {
     // array in local storage for fonograma records
     let fonogramas = JSON.parse(localStorage.getItem('fonogramas')) || [{ 
         id: 1,
-        title: 'Mr',
-        firstName: 'Valeu',
-        lastName: 'Bloggeeeeeeee',
-        email: 'joe@bloggs.com',
-        role: Role.User,
-        password: 'joe123'
+        nome_obra: 'Preto & Branco',
+        titulo_faixa: 'Preto & Branco',
+        track_time: 'Tempo da faixa',
+        genero: 'Genero.blues_classical',
+        produtor_fonografico: 'Luiz Fernando Faria',
+        nome_interprete: 'Acrescenta intérprtete',
+        nome_completo: 'Nome do Intérprete',
+        pseudonimo: 'Pseudoônimo',
+        cpf: '111.111.111-08',
+        funcao: 'Intérprete ou músico acompanhante',
+        email: 'victor@teste.com',       
     }];
 
     // monkey patch fetch to setup fake backend
@@ -54,14 +59,10 @@ export function configureFakeBackendFonograma() {
             function createFonograma() {
                 const fonograma = body();
 
-                if (fonogramas.find(x => x.email === fonograma.email)) {
-                    return error(`fonograma with the email ${fonograma.email} already exists`);
-                }
-
+                
                 // assign fonograma id and a few other properties then save
                 fonograma.id = newFonogramaId();
                 fonograma.dateCreated = new Date().toISOString();
-                delete fonograma.confirmPassword;
                 fonogramas.push(fonograma);
                 localStorage.setItem('fonogramas', JSON.stringify(fonogramas));
 
@@ -71,14 +72,7 @@ export function configureFakeBackendFonograma() {
             function updateFonograma() {
                 let params = body();
                 let fonograma = fonogramas.find(x => x.id === idFromUrl());
-
-                // only update password if included
-                if (!params.password) {
-                    delete params.password;
-                }
-                // don't save confirm password
-                delete params.confirmPassword;
-
+                
                 // update and save fonograma
                 Object.assign(fonograma, params);
                 localStorage.setItem('fonogramas', JSON.stringify(fonogramas));
